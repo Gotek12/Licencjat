@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<GridPane fx:controller="pl.wladyga.javaFX.FXMLMainController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="12"
+          styleClass="root">
+   <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
+
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER" />
+    </columnConstraints>
+
+   <Text fx:id="welcomeText" text="Welcome"
+         GridPane.columnIndex="0" GridPane.rowIndex="0"
+         GridPane.columnSpan="2"/>
+
+    <Text fx:id="infoText" text="Info"
+          GridPane.columnIndex="0" GridPane.rowIndex="1"
+          GridPane.columnSpan="2"/>
+
+   <HBox spacing="10"
+         GridPane.columnIndex="1" GridPane.rowIndex="4">
+       <StackPane>
+           <Button fx:id="startBtn" text="Start" onAction="#startApp"/>
+           <Button fx:id="stopBtn" text=" Stop" onAction="#stopApp"/>
+       </StackPane>
+   </HBox>
+
+</GridPane>

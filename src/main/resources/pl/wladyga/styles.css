@@ -1,0 +1,14 @@
+#welcomeText{
+    -fx-font: 40px Tahoma;
+    -fx-fill: red;
+}
+
+#infoText {
+    -fx-font: 12px Tahoma;
+}
+
+#startBtn, #stopBtn{
+    -fx-padding: 3 30 3 30;
+    -fx-text-fill: black;
+    -fx-font-size: 15px;
+}

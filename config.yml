@@ -1,0 +1,27 @@
+confName: custom
+server:
+  url: 192.168.1.104
+  port: 5991
+imageTaker:
+  duration: 3
+  path: images
+raports:
+  path: raports
+  okresowy:
+    duration: 60
+    folderName: okresowy
+    prefix: o
+    numOfImages: 2
+  natychmiastowy:
+    folderName: natychmiastowe
+    prefix: n
+  poczatkowy:
+    prefix: p
+  koncowy:
+    prefix: k
+clearData:
+  images: false
+  raports: false
+  whileWorking: false
+imageAnalyse:
+  percentage: 15
