@@ -66,7 +66,6 @@ public class Connection implements Runnable {
 
             int theByte = 0;
             while ((theByte = bis.read()) != -1) bos.write(theByte);
-            //dos.writeUTF("\n");
 
             bis.close();
             fis.close();

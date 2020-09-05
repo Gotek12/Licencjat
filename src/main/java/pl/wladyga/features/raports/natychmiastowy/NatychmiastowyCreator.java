@@ -28,6 +28,8 @@ public class NatychmiastowyCreator {
     @NonNull
     public BlockingQueue<Data> data;
 
+    private boolean startDiffProc = false;
+
     private final static Logger LOGGER = Logger.getLogger(NatychmiastowyCreator.class.getName());
 
     private final List<BufferedImage> buffImages = new ArrayList<>();
@@ -36,6 +38,11 @@ public class NatychmiastowyCreator {
     Raport natychmiastowy;
 
     private Config config = LoadConfig.getInstance().getConfig();
+
+    public NatychmiastowyCreator(BlockingQueue<Data> data, boolean startDiffProc){
+        this.data = data;
+        this.startDiffProc = startDiffProc;
+    }
 
     public void toCreate() {
         this.id = Info.natychmiastoweId;
@@ -47,21 +54,29 @@ public class NatychmiastowyCreator {
         double result2 = ComparisonImages.analiseImagesByColor(buffImages.get(0), buffImages.get(3)); // 2 zewnętrzne
         double middle = (double) (result + result2) / 2.0;
 
-        if (result >= properPercentage || Info.diffProc) {
+        if (middle >= properPercentage && !startDiffProc) {
             if(Info.checked){
+                System.out.println("create");
                 composeRaport();
                 Info.checked = false;
             }
 
         } else {
 
-            if(Info.lastImageId%4==0){
+            if(Info.lastImageId%6==0){
                 Info.checked = true;
+                System.out.println("tak " + Info.lastImageId);
+            }else{
+                System.out.println("nie " + Info.lastImageId);
             }
-
-            buffImages.clear();
-            names.clear();
         }
+
+        if(startDiffProc){
+            composeRaport();
+        }
+
+        buffImages.clear();
+        names.clear();
     }
 
     @SneakyThrows

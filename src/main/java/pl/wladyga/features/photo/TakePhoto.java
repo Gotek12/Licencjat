@@ -68,7 +68,6 @@ public class TakePhoto implements Runnable {
 
                 // natychmiastowy
                 if (this.id >= 5) {
-                    System.out.println("Natychmiastowe");
                     NatychmiastowyCreator natychmiastowyCreator = new NatychmiastowyCreator(data);
                     natychmiastowyCreator.toCreate();
                 }

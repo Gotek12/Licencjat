@@ -23,9 +23,12 @@ public class NatychmiastowyRaport extends BaseRaport {
 
         if(Info.diffProc){
             save("\nRóżnica w procesach to: " + Info.diffamount + "\n\n");
-            //dodać delte procesów
             Info.diffProc = false;
             LOGGER.log(Level.INFO, "Create natychmiastowy diff processes: ");
+        }
+
+        if(Info.checked && !Info.diffProc){
+            save("\n\nNa podstawie analizy zdjec\n");
         }
 
         if(this.getImagesListName().size() != 0){
