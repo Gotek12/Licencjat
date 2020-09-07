@@ -42,7 +42,6 @@ public class ProcessDiff implements Runnable {
                     startProcAmount = ReadProcess.of().countProcesses();
                     System.out.println("Start proc: " + startProcAmount);
                     runAtStart = false;
-                    Thread.sleep(2000);
                 }
 
                 long acc = this.accProc();

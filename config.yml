@@ -1,6 +1,7 @@
 confName: custom
 server:
-  url: 192.168.1.104
+#  url: localhost
+  url: 192.168.1.101
   port: 5991
 imageTaker:
   duration: 3

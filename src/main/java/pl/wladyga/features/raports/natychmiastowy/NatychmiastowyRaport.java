@@ -22,13 +22,13 @@ public class NatychmiastowyRaport extends BaseRaport {
         super.dataToSave();
 
         if(Info.diffProc){
-            save("\nRóżnica w procesach to: " + Info.diffamount + "\n\n");
+            save("\nRóżnica w procesach to: " + Info.diffamount + "\n");
             Info.diffProc = false;
             LOGGER.log(Level.INFO, "Create natychmiastowy diff processes: ");
         }
 
         if(Info.checked && !Info.diffProc){
-            save("\n\nNa podstawie analizy zdjec\n");
+            save("\nNa podstawie analizy zdjec\n");
         }
 
         if(this.getImagesListName().size() != 0){

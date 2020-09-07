@@ -10,7 +10,6 @@ import pl.wladyga.connectionTest.Data;
 import pl.wladyga.features.photo.comparison.ComparisonImages;
 import pl.wladyga.features.raports.BaseRaport;
 import pl.wladyga.features.raports.Raport;
-import pl.wladyga.features.raports.okresowy.OkresowyRaport;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -28,6 +27,8 @@ public class NatychmiastowyCreator {
     @NonNull
     public BlockingQueue<Data> data;
 
+    private long tmp = 0L;
+
     private boolean startDiffProc = false;
 
     private final static Logger LOGGER = Logger.getLogger(NatychmiastowyCreator.class.getName());
@@ -39,7 +40,7 @@ public class NatychmiastowyCreator {
 
     private Config config = LoadConfig.getInstance().getConfig();
 
-    public NatychmiastowyCreator(BlockingQueue<Data> data, boolean startDiffProc){
+    public NatychmiastowyCreator(BlockingQueue<Data> data, boolean startDiffProc) {
         this.data = data;
         this.startDiffProc = startDiffProc;
     }
@@ -51,27 +52,31 @@ public class NatychmiastowyCreator {
 
         double properPercentage = config.getImageAnalyse().getPercentage();
         double result = ComparisonImages.analiseImagesByColor(buffImages.get(0), buffImages.get(3)); // porownuje 2 srodkowe
-        double result2 = ComparisonImages.analiseImagesByColor(buffImages.get(0), buffImages.get(3)); // 2 zewnętrzne
+        double result2 = ComparisonImages.analiseImagesByColor(buffImages.get(1), buffImages.get(2)); // 2 zewnętrzne
         double middle = (double) (result + result2) / 2.0;
 
+
         if (middle >= properPercentage && !startDiffProc) {
-            if(Info.checked){
+            if (Info.checked) {
                 System.out.println("create");
+                tmp = Info.lastImageId;
+
+//                Info.nObId = Info.nObId++;
+                Info.nObLast = true;
                 composeRaport();
                 Info.checked = false;
             }
 
         } else {
-
-            if(Info.lastImageId%6==0){
+            if (Info.lastImageId - tmp >= 8) {
                 Info.checked = true;
-                System.out.println("tak " + Info.lastImageId);
-            }else{
-                System.out.println("nie " + Info.lastImageId);
             }
         }
 
-        if(startDiffProc){
+        if (startDiffProc) {
+//            Info.nDiffId++;
+            Info.nDiffLast = true;
+
             composeRaport();
         }
 

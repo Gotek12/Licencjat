@@ -12,13 +12,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingDeque;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TakePhoto implements Runnable {
 
-    public BlockingQueue<Data> data = new LinkedBlockingDeque<>();
+    public BlockingQueue<Data> data;
 
     private final static Logger LOGGER = Logger.getLogger(TakePhoto.class.getName());
 

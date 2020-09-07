@@ -63,14 +63,17 @@ public class FXMLMainController implements Initializable {
         infoText.setText("Proszę wyłączyć programy/strony aby uniknąć udostępnienia wrażliwych danych");
 
         config = LoadConfig.getInstance().getConfig();
+
+        Connection con = new Connection(data);
+        new Thread(con).start();
     }
 
     @SneakyThrows
     @FXML
     public void startApp() throws IOException {
 
-        Connection con = new Connection(data);
-        new Thread(con).start();
+//        Connection con = new Connection(data);
+//        new Thread(con).start();
 
         Alert alert = new StartAlert().showAlert();
         if (alert.showAndWait().get() == ButtonTypes.YES) {
@@ -90,8 +93,8 @@ public class FXMLMainController implements Initializable {
             new Thread(okresowyCreator).start();
 
             //start diff processes
-            processDiff = new ProcessDiff(data);
-            new Thread(processDiff).start();
+//            processDiff = new ProcessDiff(data);
+//            new Thread(processDiff).start();
         }
     }
 
