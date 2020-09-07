@@ -11,8 +11,8 @@ public class Info {
     public static long natychmiastoweId = 1L;
     public static long nDiffId = 1L; //id for natychmiastowy diff
     public static long nObId = 1l; //id for natychmiastowy obrazek
+
     //true - when was send last
     public static boolean nDiffLast = false;
     public static boolean nObLast = false;
-
 }

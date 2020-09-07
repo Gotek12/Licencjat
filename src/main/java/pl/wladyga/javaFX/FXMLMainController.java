@@ -93,8 +93,8 @@ public class FXMLMainController implements Initializable {
             new Thread(okresowyCreator).start();
 
             //start diff processes
-//            processDiff = new ProcessDiff(data);
-//            new Thread(processDiff).start();
+            processDiff = new ProcessDiff(data);
+            new Thread(processDiff).start();
         }
     }
 

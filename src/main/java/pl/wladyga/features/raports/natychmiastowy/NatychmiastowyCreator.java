@@ -28,6 +28,7 @@ public class NatychmiastowyCreator {
     public BlockingQueue<Data> data;
 
     private long tmp = 0L;
+    private long tmp2 = 0L;
 
     private boolean startDiffProc = false;
 
@@ -56,13 +57,15 @@ public class NatychmiastowyCreator {
         double middle = (double) (result + result2) / 2.0;
 
 
-        if (middle >= properPercentage && !startDiffProc) {
+        if (middle >= properPercentage && !startDiffProc && !Info.nDiffLast) {
             if (Info.checked) {
                 System.out.println("create");
                 tmp = Info.lastImageId;
 
-//                Info.nObId = Info.nObId++;
+                Info.nObId = Info.nObId++;
+
                 Info.nObLast = true;
+                Info.nDiffLast = false;
                 composeRaport();
                 Info.checked = false;
             }
@@ -73,12 +76,24 @@ public class NatychmiastowyCreator {
             }
         }
 
-        if (startDiffProc) {
-//            Info.nDiffId++;
-            Info.nDiffLast = true;
 
-            composeRaport();
+        if (startDiffProc) {
+            Info.nDiffId++;
+            if (Info.checked2 && !Info.nObLast) {
+                tmp2 = Info.lastImageId;
+
+                Info.nDiffLast = true;
+                Info.nObLast = false;
+
+                composeRaport();
+                Info.checked2 = false;
+            }else{
+                if (Info.lastImageId - tmp2 >= 10) {
+                    Info.checked2 = true;
+                }
+            }
         }
+
 
         buffImages.clear();
         names.clear();
