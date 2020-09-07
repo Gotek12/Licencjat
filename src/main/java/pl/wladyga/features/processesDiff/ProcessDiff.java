@@ -3,15 +3,12 @@ package pl.wladyga.features.processesDiff;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import pl.wladyga.Info;
-import pl.wladyga.connectionTest.Data;
-import pl.wladyga.features.ProcessDelta;
+import pl.wladyga.connection.Data;
 import pl.wladyga.features.basicInfo.ReadProcess;
 import pl.wladyga.features.photo.TakePhoto;
 import pl.wladyga.features.raports.natychmiastowy.NatychmiastowyCreator;
 
-import java.net.Socket;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingDeque;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

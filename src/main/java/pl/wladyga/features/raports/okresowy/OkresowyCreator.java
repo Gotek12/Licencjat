@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import pl.wladyga.Info;
 import pl.wladyga.config.Config;
 import pl.wladyga.config.LoadConfig;
-import pl.wladyga.connectionTest.Data;
+import pl.wladyga.connection.Data;
 import pl.wladyga.features.raports.BaseRaport;
 import pl.wladyga.features.raports.Raport;
 

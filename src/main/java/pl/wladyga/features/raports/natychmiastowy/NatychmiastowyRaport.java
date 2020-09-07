@@ -17,12 +17,19 @@ public class NatychmiastowyRaport extends BaseRaport {
 
     private final static Logger LOGGER = Logger.getLogger(NatychmiastowyRaport.class.getName());
 
+    private String deltaProc() {
+        return new ProcessDelta(ReadProcess.of().readProcess()).delta();
+    }
+
     @Override
     public void dataToSave(){
         super.dataToSave();
 
         if(Info.diffProc){
-            save("\nRóżnica w procesach to: " + Info.diffamount + "\n");
+            //save("\nRóżnica w procesach to: " + Info.diffamount + "\n");
+            save("Różnica w procesach:\n");
+            save(deltaProc());
+
             Info.diffProc = false;
             LOGGER.log(Level.INFO, "Create natychmiastowy diff processes: ");
         }

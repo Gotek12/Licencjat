@@ -3,7 +3,7 @@ package pl.wladyga.features.photo;
 import pl.wladyga.Info;
 import pl.wladyga.config.Config;
 import pl.wladyga.config.LoadConfig;
-import pl.wladyga.connectionTest.Data;
+import pl.wladyga.connection.Data;
 import pl.wladyga.features.raports.natychmiastowy.NatychmiastowyCreator;
 
 import javax.imageio.ImageIO;

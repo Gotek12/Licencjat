@@ -6,7 +6,7 @@ import lombok.SneakyThrows;
 import pl.wladyga.Info;
 import pl.wladyga.config.Config;
 import pl.wladyga.config.LoadConfig;
-import pl.wladyga.connectionTest.Data;
+import pl.wladyga.connection.Data;
 import pl.wladyga.features.photo.comparison.ComparisonImages;
 import pl.wladyga.features.raports.BaseRaport;
 import pl.wladyga.features.raports.Raport;
@@ -28,6 +28,7 @@ public class NatychmiastowyCreator {
     public BlockingQueue<Data> data;
 
     private long tmp = 0L;
+    private long tmp2 = 0L;
 
     private boolean startDiffProc = false;
 
@@ -57,28 +58,48 @@ public class NatychmiastowyCreator {
 
 
         if (middle >= properPercentage && !startDiffProc) {
-            if (Info.checked) {
-                System.out.println("create");
-                tmp = Info.lastImageId;
+            if (Info.checked && !Info.nDiffLast) {
 
-//                Info.nObId = Info.nObId++;
+                tmp = Info.lastImageId;
+                Info.nObId = Info.nObId++;
                 Info.nObLast = true;
+
                 composeRaport();
                 Info.checked = false;
+            } else {
+                if (Info.lastImageId - tmp >= 8) {
+                    System.out.println("I can but wait");
+                    Info.checked = true;
+                }
+
+                if (Info.lastImageId - tmp2 >= 10) {
+                    Info.nDiffLast = false;
+                }
+                Info.nObLast = false;
             }
 
-        } else {
-            if (Info.lastImageId - tmp >= 8) {
-                Info.checked = true;
+        }else if (startDiffProc) {
+            if (Info.checked2 && !Info.nObLast) {
+
+                tmp2 = Info.lastImageId;
+                Info.nDiffId++;
+                Info.nDiffLast = true;
+
+                composeRaport();
+                Info.checked2 = false;
+            } else {
+                if (Info.lastImageId - tmp2 >= 10) {
+                    Info.checked2 = true;
+                }
+
+                if (Info.lastImageId - tmp >= 8) {
+                    Info.nObLast = false;
+                }
+
+                Info.nDiffLast = false;
             }
         }
 
-        if (startDiffProc) {
-//            Info.nDiffId++;
-            Info.nDiffLast = true;
-
-            composeRaport();
-        }
 
         buffImages.clear();
         names.clear();

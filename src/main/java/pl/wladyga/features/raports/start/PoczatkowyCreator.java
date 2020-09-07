@@ -3,7 +3,7 @@ package pl.wladyga.features.raports.start;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import pl.wladyga.connectionTest.Data;
+import pl.wladyga.connection.Data;
 import pl.wladyga.config.Config;
 import pl.wladyga.config.LoadConfig;
 import pl.wladyga.features.raports.BaseRaport;

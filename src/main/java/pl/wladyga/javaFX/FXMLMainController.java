@@ -6,9 +6,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import lombok.SneakyThrows;
-import pl.wladyga.connectionTest.Connection;
-import pl.wladyga.connectionTest.Data;
-import pl.wladyga.connectionTest.Test;
+import pl.wladyga.connection.Connection;
+import pl.wladyga.connection.Data;
 import pl.wladyga.config.Config;
 import pl.wladyga.config.LoadConfig;
 import pl.wladyga.features.photo.TakePhoto;
@@ -93,8 +92,8 @@ public class FXMLMainController implements Initializable {
             new Thread(okresowyCreator).start();
 
             //start diff processes
-//            processDiff = new ProcessDiff(data);
-//            new Thread(processDiff).start();
+            processDiff = new ProcessDiff(data);
+            new Thread(processDiff).start();
         }
     }
 
